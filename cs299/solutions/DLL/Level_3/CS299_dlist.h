@@ -23,6 +23,8 @@ class list
         void build();   //supplied
         void display(); //supplied
         
+        int copy_nonDupe(list &);
+        int add_ave_node();
 
      /* *****************YOUR TURN! ******************************** */
      /* place your prototype here */
@@ -30,6 +32,13 @@ class list
      private:
          node * head;   //notice there is both a head
          node * tail;   //and a tail, common for DLL
+         
+        int add_ave_node(node *&, int&, int&);
+
+        int copy_nonDupe(node *);
+        int copy_nonDupe(node * head, node * current, node *& cpy, int & count);
+        int duplicate_check(node * head, node * current, node *& cpy, bool &, int&);
+        void add_node(node * head, node *& copy, node * copyPrev);
 };
 
 //Display the last two items in the list, in reverse order.

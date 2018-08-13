@@ -118,3 +118,62 @@ void list :: destroy_nodes(node *& head)
 
 
 }
+
+
+int list :: remove_except()
+{
+    if(!head)
+        return 0;
+
+    return remove_except(head, tail);
+}
+
+int list :: remove_except(node *& head, node *& tail)
+{
+    int count = 0;
+
+    remove_except(head, count);
+
+    head = tail;
+
+    return count;
+
+}
+void list ::remove_except(node *& head, int& count)
+{
+    if(!head)
+        return;
+
+/*    if(head -> next){
+        node * temp = head;
+        delete temp;
+        temp = NULL;
+        count++;
+        head = head -> next;
+        remove_except(head, count);
+    }
+    else 
+        return;
+*/
+    if(head -> next -> next)
+        remove_except(head -> next, count);
+
+        delete head;
+        head = NULL;
+        count++;
+
+}
+
+
+int list :: countNodes()
+{
+    return countNodes(head);
+}
+
+int list :: countNodes(node * head)
+{
+    if(!head)
+        return 0;
+
+    return countNodes(head -> next) +1;
+}

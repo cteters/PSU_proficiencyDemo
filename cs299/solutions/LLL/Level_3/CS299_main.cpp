@@ -10,7 +10,7 @@ int main()
     object.display();  //displays the LLL
 
     //PLEASE PUT YOUR CODE HERE to call the functions
-    cout << "The average of all nodes is ";
+/*    cout << "The average of all nodes is ";
     cout << object.average() << "." <<endl;
 
     num = object.add_99();
@@ -18,8 +18,12 @@ int main()
 
     num = object.copy_all_even();
     cout << "There are " << num << " even nodes." <<endl;
+*/
 
-    object.display();  //displays the LLL again!
+//    cout << "removed " << object.remove_except() << " nodes." <<endl;
+//   object.display();  //displays the LLL again!
+
+    cout << "There are " << object.countNodes() << " nodes." <<endl;
    
     
     return 0;

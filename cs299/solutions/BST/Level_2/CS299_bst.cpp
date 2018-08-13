@@ -55,94 +55,6 @@ int count_root(int& count, int num, node* root)
 
 }
 
-
-
-//Remove selected value and return true if so
-bool remove_value(int target, node*& root, node*& value)
-{
-    if(!root){
-        value = NULL;
-        return false;
-    }
-    else if(root -> data == target){
-        remove_node(root);
-        return true;
-    }
-    //CASE: go left
-    else if(root -> data > target){
-        cout << "do a thing" << endl;
-        //remove_value(target, root -> left, value);
-        //return false;??
-
-    //CASE: go right
-    }else{
-        node * temp = root;
-        remove_value(target, temp -> right, value);
-        root = temp;
-    }
-
-    return false;
-
-}
-
-
-void remove_node(node *& root)
-{
-    if(!root)
-        return;
-
-    //CASE: leaf
-    if(!root -> right && !root -> left){
-        delete root;
-        root = NULL;
-        return;
-    }
-
-    //CASE: 1 child
-    else if( (root-> left && !root -> left) ||
-            (!root -> left && root -> right)){
-
-        if(root -> left)
-            cout << " delete this later " <<endl;
-           // node_connect = root -> left;
-        else{
-           // node_connect = root -> left;
-           // delete nodePtr;
-           // nodePtr = NULL;
-           // return;
-        }
-
-    //CASE: 2 child
-    }else{
-        //tempPtr = remove_left_most(root -> right, newNodeVal)
-        //nodePtr -> setRightChildPtr(tempPtr);
-        //nodePtr -> setItem(newNodeVal)
-        //return nodePtr
-
-    }
-}
-
-//void remove_left_most(node *& root, int & inorder_successor)
-//{
-    //if(!root -> left){
-    //  inorder_successor = root -> data;
-    //  return remove_node(root);
-    //}else
-    //  return remove_left_most(root -> left, inorder_successor);
-
-//}
-
-/**
-//PUBLIC METHOD
-bool remove(int target, node *& root)
-{
-    bool success = false;
-    node * value = NULL;
-    success = remove_value(target, root, value);
-    return success;
-}
-**/
-
 int count_leafs(node* root){
     int count = 0;
     return count_leafs(count, root);
@@ -163,78 +75,120 @@ int count_leafs(int & num, node* root)
 
 }
 
+int remove_inorder_successor(node *& root)
+{
+    int num = 0;
+    if(!root)
+        return num;
 
-//OLDER WORKING CODE
-bool remove(int num, node * root)
+    remove_inorder_successor(num, root);
+
+    return num;
+}
+
+void remove_inorder_successor(int & num, node *& root)
 {
     if(!root)
-        return false;
+        return;
 
-    node * hold;
-    if(num == root -> data){
-
-        //CASE: no leaf
-        if(!root -> left && !root -> right){
-            hold = root;
-            delete hold;
-            root = NULL;
-        }
-        else if(root -> left && !root -> right){
-            hold = root -> left;
-            root-> left = hold -> left;
-            delete root;
-            root = hold;
-        }
-        else if(!root -> left && root -> right){
-            hold = root -> right;
-            root -> right = hold -> right;
-            delete root;
-            root = hold;
-        }
-    } else {
-        if(root -> right)
-            remove_right(num,root);
+    //No children
+    if(!root -> right && !root -> left){
+        cout << "deleteing root" <<endl;
+        num = root -> data;
+        delete root;
+        root = NULL;
+        return;
     }
-
-    if(root){
-        if(num < root -> data)
-            remove(num, root -> left);
-        else
-            remove(num, root -> right);
+    //No value right
+    else if(!root -> right){
+        cout << "deleting left leaf" <<endl;
+        node * temp = root -> left;
+        root -> left = temp -> left;
+        root -> right = temp -> right;
+        num = temp -> data;
+        delete temp;
+        temp = NULL;
+        return;
     }
-
-    return true;
-}
-
-void remove_right(int num, node * root)
-{
-    node * hold = root -> right;
-    if(num == root -> data){
-        if(!hold -> left){
-            root -> right = hold -> right;
-            delete hold;
-            hold = NULL;
-        }
-        else if (hold -> right && hold -> left){
-            node * current = hold;
-            node * parent = NULL;
-            while(current -> left){
-                parent = current;
-                current = current -> left;
-            }
-            if(parent)
-                parent -> left = current -> right;
-            node * temp = root -> right;
-            current -> right = hold -> right;
-            current -> left = hold -> left;
-            root -> right = current;
+    else{
+        //go right once
+        node * shift = root -> right;
+        node * inorderS = shift;
+        //go all the way left
+        traverse_left(shift, inorderS);
+        num = inorderS -> data;
+        //make right child the child for parent
+        if(inorderS -> right){
+            cout << "deleting IOS w/ right leaf" << endl;
+            node * temp = inorderS -> right;
+            inorderS -> right = temp -> right;
+            inorderS -> left = temp -> left;
+            inorderS -> data = temp -> data;
             delete temp;
             temp = NULL;
+            return;
         }
+        else{
+            cout << "deleting IOS w/o right leaf " << endl;
+            shift = root -> right;
+            remove_left(shift, inorderS);
+        }
+    }
+
+}
+
+void traverse_left(node *& root, node *& hold)
+{
+    if(!root -> left){
+        hold = root;
+        return;
+    }
+    traverse_left(root -> left, hold);
+}
+
+void remove_left(node *& root, node * target)
+{
+    if(!root)
+        return;
+
+    remove_left(root -> left, target);
+    if(root == target){
+        node * temp = root;
+        delete temp;
+        root = temp = NULL;
     }
 }
 
+void copy_not_root(node * root, node *& cpy)
+{
+    node * hold = root;
+    copy_not_root(root, cpy, hold);
 
+}
+void copy_not_root(node * root, node *& cpy, node * hold)
+{
+    if(!root)
+        return;
 
+    if(root != hold)
+        copy_data(cpy, root -> data);
 
+    copy_not_root(root -> left, cpy, hold);
+    copy_not_root(root -> right, cpy, hold);
+}
 
+void copy_data(node *& root, int num)
+{
+    if(!root){
+        root = new node;
+        root -> data = num;
+        root -> left = NULL;
+        root -> right = NULL;
+        return;
+    }
+
+    else if(num < root -> data)
+        copy_data(root -> left, num);
+    else
+        copy_data(root -> right, num);
+}

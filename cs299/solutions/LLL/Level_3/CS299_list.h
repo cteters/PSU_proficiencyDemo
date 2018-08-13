@@ -18,23 +18,30 @@ class list
      list();			//supplied
      ~list();			//supplied
     double average();
-    void average(double&, int&,node*);
     int add_99();
-    int add_99(int,node*&,node*&);
     int copy_all_even();
-    int copy_all_even(int, node*&, node*&);
-    void display_nodes(node * curr);
-    void destroy_nodes(node *& head);
-     void build();     		//supplied
-     void display();  		//supplied
+    void build();     		//supplied
+    void display();  		//supplied
+    int remove_except();
+
+    int countNodes();
+    int countNodes(node*);
     
     /* *****************YOUR TURN! ******************************** */
     //Write your function prototype here:
     
 
-   private:		//notice there is both a head and a tail!
+    private:		//notice there is both a head and a tail!
       node * head;
       node * tail;
+
+    int add_99(int,node*&,node*&);
+    int copy_all_even(int, node*&, node*&);
+    void display_nodes(node * curr);
+    void destroy_nodes(node *& head);
+    void average(double&, int&,node*);
+    int remove_except(node *& head, node *& tail);
+    void remove_except(node *&, int&);
 };
 
 

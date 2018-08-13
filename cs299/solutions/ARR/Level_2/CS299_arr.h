@@ -21,7 +21,12 @@ void destroy(node * head[]); //supplied
 //Write your function prototype here:
 
 //Display all data except the last node recursively. Return the number of nodes displayed.
+int display_not_last(node * head[]);
+int display_not_last(int num, int & count, node * head[]);
+void display_not_last(int &, node *);
 
 //Remove the entire last LLL from the array of LLL and return the number of items removed.
+int remove_last_LLL(node * head[]);
+void remove_last_LLL(int & count, node *&);
 
 //Add a new node to the end of each LLL; it should have the same value as the first node in that LLL. Return the number of nodes added.
