@@ -1,0 +1,197 @@
+So If figure it's worth bringing up PSU's proficiency demo, as a large fraction of our class has interest in transferring to PSU's CS program. If you're not already familiar, in order to enter into the upper division CS courses at PSU, one of the requirements is to pass a live coding exam that demonstrates basic coding abilities of data structures and recursion in a Linux environment with an editor such as VIM. Students that take CS202 at PSU take this exam during their course, but for those of us that plan on transferring CS261 credits we are required to complete the exam separately.
+
+
+https://www.pdx.edu/computer-science/admission-to-the-computer-science-program
+According to PSU's website, "Students who have taken the equivalent of CS 202 outside of PSU will be sent a link to sign up for the proficiency demo upon submission and review of their CS application during the appropriate deadline."
+Proficiency Demo Dates:
+Spring 2018 Admission - No Proficiency Demos
+Fall 2018 Admission - May 2 & 4, 2018
+Winter 2018 Admission - November 2, 2018
+
+Here is a link describing everything in greater detail: Proficiency Exam Process:
+https://www.pdx.edu/computer-science/sites/www.pdx.edu.computer-science/files/PSU%20Proficiency%20Exam%20Application%20Process-2016-2017.pdf
+
+Supplementing to this, it is worth considering enrolling in CS299 at PSU in anticipation toward the exam. CS299 is designed to prep for the exam by completing one hour weekly lab sessions related to the demo. Alternatively, my personal choice is to prep for the exam through the use of the lab book which can be purchased at the PSU bookstore for $16. I've also obtained the most recent files that are associated with the class and proficiency demo and can be found and obtained from my PCC Linux directory:
+
+~/student/christopher.teters/CS299
+
+I have taken classes under the Professor, Karla Fant who conducts the exams and should likely be able to answer common questions pertaining to the whole process. The main thing is setting aside an adequate amount of prep time I believe.
+
+~Cheers!
+
+
+
+===========================================================================
+
+I've typed up a list of function descriptions for that I copied from the CS299 lab book (The proficiency demo prep class). I plan to commenting these in my own lab file to make it more leisurely convenient for me to find the time to practice. If the list looks a bit exhaustive, remember that it was built for a 1 credit class, so maybe we are looking at 10 hours of coding, give or take.
+
+A straightforward approach to this would be to create a new cpp file in each respective Level directory and plug in your functions there, and also add the respective header names and function calls. Past that, Level 1 problems are meant to be solved through iteration, while level 2 problems are recursive. I haven't really looked into level 3 yet, but I'm guessing also recursive, but with a focus on the need to write an algorithm first to help understand the problem before you talk it.
+
+There still are other things to consider in this whole process, like editing avoiding the use of arrow keys and knowing helpful vim commands like gg, cntrl+u and all those great things, but the biggest thing is just setting aside time to do all this. I myself am starting to get a little rusty and so will definitely benefit from the time spent.
+
+Level 1 Linear Linked Lists (LLL) Iterative
+
+Display all items in the LLL that do not match the first node’s data. Return the number of data items displayed.
+
+Sum all of the data that is larger than the last node’s data. Add a new node at the end with this sum. Return the sum calculated.
+
+Find out if the LAST two numbers appear more than once and return True if so.
+
+Remove the last item from a linear linked list. Return the data from that last node. Return zero if there are no data items.
+
+Remove all items from a linear linked list except for the first and last node.
+
+Copy the data at the last node and insert it at the beginning of the linear linked list (inserting a new node). Return the value of the NEW last node!
+
+LEVEL 2 LLL Recursive
+
+Check if the requested data (sent in as an argument) is a LLL
+
+Display every other item, starting with the first. Return the number of items displayed.
+
+Add a node JUST BEFORE the last node of a LLL and return the data in the last node
+
+Remove all items (there is no “node” destructor). Return the number of items removed.
+
+Remove everything except the first and the last node. Return the sum of the data removed.
+
+Make a complete copy of a LLL and return the number of items copied.
+
+LEVEL 3 LLL
+
+Calculate the average of e very data item in a LLL and return the average using a single traversal.
+
+Add a node (with the data value 999) after each node that has a data value LARGER than the last node’s data using a single traversal. Return the number of times 99 is added into the list. DO NOT RE-TRAVERSE!
+
+Copy all even data that exists in a LLL and build a new LLL. Return the number of items in a new LLL (without retraversing!).
+
+LEVEL 1 CLL Iterative
+
+Display all data except the last node’s data item. Return the sum of data items displayed.
+
+Remove the “last” node in a CLL (pointed to by rear). Return whether or not this was successful.
+
+Make a copy of a CLL. Return the number of items copied.
+
+LEVEL 2 (Circular Linked Lists (CLL) Recursive
+
+Remove all nodes in a CLL. Returning the number of nodes removed.
+
+Count all even data within a CLL recursicvely. Return the count.
+
+Add a new node prior to the rear of a CLL but only if the data doesn’t already exist in the CLL.
+
+Make a complete and duplicate copy of a CLL; return if the new list has any data in it (true) or not (false)
+
+LEVEL 3 CLL work with the data structure as a CLL rather than breaking it and turning it into an LLL.
+
+Add a node before each node that has “even” data in a CLL, returnign the number of nodes added.
+
+Remove every node that has the same data as the rear’s data. Do not remove the rear’s node. Perform this recursively. Return if anything was removed (true) or not (false).
+
+Remove every node that has the same data as the rear’s data. Do not remoeve the rear’s node. Perform this recursively. Return if anything was removed (true) or not (false).
+
+Switch the first and the last nodes in a CLL (not the data – but reattach the node correctly).
+
+Make a copy of the last two nodes in a CLL, creating a new list of those two items; return average of these two items.
+
+DLL Level 1 Iterative
+
+Remove every other item from a DLL and return the number of items removed
+
+Duplicate every item that is a ‘2’ in the list. Return the number of items duplicated. Place the new nodes immediately after the previous ‘2’.
+
+Level 2 Doubly Linked Lists (DLL) in Recursion
+
+Swap the last two nodes in a DLL, returning the sum of the data in these two nodes.
+
+Display the contents of the DLL in reverse; return the last node’s data item (the first to be displayed ) and that again from main.
+
+Add a new node to the end of a DLL, but only if the data doesn’t already exist in the DLL. Consider efficiency and stop traversal early if possible.
+
+Make a complete and duplicate copy of a DLL; return if the new list has any data in it (true) or not (false).
+
+DLL Level 3
+
+Display the last two items in the list, in reverse order.
+Return the sum of the last two data items.
+
+Return zero if the list is empty.
+
+Return just the data in the node if there is only one node.
+
+Remove the last two items in the list.
+
+Remove the last two items in the list, regardless of their data value.
+
+Return the total number of items in the list, after the remove has taken place.
+
+Return zero if the list is empty.
+
+Remember to set the new last node’s next pointer to NULL.
+
+Add a node to the end of the list that contains the average of the list. Perform this with a single traversal. Return the average to main.
+
+Remove the nodes with the largerst two data items in a single traversal; return the sum of the data in these two nodes.
+
+Array of linked lists (ARR) Level 1 Iterative
+
+Remove the last item in each LLL. Return the number of items removed.
+
+Add a node to the end of the last LLL. Return the number of nodes in that LLL.
+
+Deallocate the entire LLL of arrays. Return the number of items removed.
+
+Rewrite the function to deallocate the entire LLL of arrays. Return the number of items removed. THIS TIME use pointer arithmetic!
+
+ARR Level 2 Recursive
+
+Display all data except the last node recursively. Return the number of nodes displayed.
+
+Remove the entire last LLL from the array of LLL and return the number of items removed.
+
+Add a new node to the end of each LLL; it should have the same value as the first node in that LLL. Return the number of nodes added.
+
+ARR Level 3 NO LOOPS!
+
+Display the data in the array of LLL in reverse order, starting with the last node in the LLL.
+
+Average all of the data in an array of LLL. Display the result in main. Return the average.
+
+Make a complete copy of an array of LLL. Return the number of items copied.
+
+Binary Search Trees (BST) Level 1
+
+Count the number of nodes with data greater than the root’s data in a BST
+
+Calculate the sum of every leaf’s data (nodes that have no children) in a BST, return the result.
+
+Traverse the tree to determine the height.
+
+Find the root’s inorder successor and return that item’s data to main.
+
+Deallocate all nodes in a BST
+
+Make a complete copy of a BST, creating a new BST
+
+BST Level 2
+
+Display the largest item in a BST
+
+Count the number of times the root’s data appears in the list. Return the count and display it from main
+
+Remove the root’s inorder successor. DO NOT USE ANY LOOPS!!! Return the data for the inorder successor to main.
+
+Make a complete copy of a binary search tree, exclude the root of the original tree.
+
+BST Level 3
+
+Remove the largest item from a BST; return the value of the largest item removed.
+
+Display every data item smaller than the root’s data; return the number of times displayed
+
+Count the number of nodes larger than the smallest item in a BST; return the count
+
+Remove every leaf, unless it is the same as the root’s data. Return the number of items removed.
+
+Create a new BST with a copy of all of the data divisible by 3. Minimize traversal. Return the number of items copied.

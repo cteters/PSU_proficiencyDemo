@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+
+import os, shutil, glob
+import time
+
+path = '/mnt/quizor/submit/'
+
+date = time.strftime("%b-%d_%H:%M" , time.localtime())
+name = os.getlogin()
+lpath = os.getcwd().split('/')
+
+cls = ""
+lab = ""
+level = ""
+ds = ""
+
+for p in lpath:
+    if "CS" in p:
+        cls = p
+    if "Lab" in p or "demo" in p:
+        lab = p
+    if "Level" in p:
+        level = p;
+    if "LLL" in p or "DLL" in p or "CLL" in p or "DLL" in p or "ARR" in p or "BST" in p:
+        ds = p;
+
+path += name + '/' + cls + '/' + lab + ds + "-" + level + '/' + name + '_' + date
+
+try:
+    os.makedirs(path)
+except OSError as e:
+    pass
+
+files = glob.glob("*.h")
+for f in files:
+    try:
+        shutil.copyfile(f, path+'/'+f)
+    except IOError:
+        print f, "could not be copied."
+files = glob.glob("*.cpp")
+for f in files:
+    try:
+        shutil.copyfile(f, path+'/'+f)
+    except IOError:
+        print f, "could not be copied."
+
+print "Lab Submitted"
+
